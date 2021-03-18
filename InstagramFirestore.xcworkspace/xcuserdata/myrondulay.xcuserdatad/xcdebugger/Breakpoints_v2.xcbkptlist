@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C3EAFEC2-E607-442E-B3AC-800BAD2EFE81"
+            uuid = "5C6BBE0B-F4E1-428C-9F57-DEF230F7A539"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "InstagramFirestore/New Group/Controllers/MainTabController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "checkIfUserIsLoggedIn()"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "authenticationComplete()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D390B94A-008A-4DF6-8D72-B77A467EBB8D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "InstagramFirestore/New Group/Controllers/Authentication/LoginController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "handleShowSignUp()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

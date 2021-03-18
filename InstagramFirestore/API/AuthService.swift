@@ -43,16 +43,16 @@ struct AuthService {
 				ImageUploader.uploadImage(image: credentials.profileImage) { result in
 					switch result {
 					case .success(let imageURL):
-						data["profileImageUrl"] = imageURL
+						data["profile_image_url"] = imageURL
 					default:
 						break
 					}
-					Firestore.firestore().collection("users").document(uid).setData(data, completion: completion)
+					COLLECTION_USERS.document(uid).setData(data, completion: completion)
 					return
 				}
 				
 			}
-			Firestore.firestore().collection("users").document(uid).setData(data, completion: completion)
+			COLLECTION_USERS.document(uid).setData(data, completion: completion)
 		
 		}
 		

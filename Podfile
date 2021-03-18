@@ -14,6 +14,7 @@ target 'InstagramFirestore' do
   pod 'Firebase/Storage'
   pod 'Firebase/Messaging'
   pod 'Firebase/Auth'
+	pod 'FirebaseFirestoreSwift'
   
   # Other Pods
 	pod 'JGProgressHUD', '~>2.0.3'

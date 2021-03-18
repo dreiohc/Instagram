@@ -231,6 +231,8 @@ PODS:
     - "gRPC-C++ (= 0.0.9)"
     - leveldb-library (~> 1.22)
     - nanopb (~> 0.3.901)
+  - FirebaseFirestoreSwift (0.4.0):
+    - FirebaseFirestore (>= 1.6.1, ~> 1.6)
   - FirebaseInstanceID (4.2.8):
     - FirebaseCore (~> 6.5)
     - GoogleUtilities/Environment (~> 6.4)
@@ -318,6 +320,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Messaging
   - Firebase/Storage
+  - FirebaseFirestoreSwift
   - JGProgressHUD (~> 2.0.3)
   - SDWebImage (~> 4.4.2)
   - YPImagePicker
@@ -337,6 +340,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnosticsInterop
     - FirebaseDatabase
     - FirebaseFirestore
+    - FirebaseFirestoreSwift
     - FirebaseInstanceID
     - FirebaseMessaging
     - FirebaseStorage
@@ -370,6 +374,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
   FirebaseDatabase: 0144e0706a4761f1b0e8679572eba8095ddb59be
   FirebaseFirestore: 52120e2833f804a874ba1a9f59aab864a8ae2286
+  FirebaseFirestoreSwift: 2c46dbc1156db97dc4f6dd798d4f5b57b9c7fab6
   FirebaseInstanceID: ce993a3c3670a8f5d47ce371ac5d143c560608c5
   FirebaseMessaging: 089b7a4991425783384acc8bcefcd78c0af913bd
   FirebaseStorage: 93fe2f8190a01bfb2b2c4932df7d679744c4ef1d
@@ -389,6 +394,6 @@ SPEC CHECKSUMS:
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: bbaa4f4ecaf6e4bb42e0f18bf7d57da70e7ebe57
+PODFILE CHECKSUM: b2ff6bed8c2ba338b592135c2e89da9fac845f95
 
 COCOAPODS: 1.8.4
