@@ -103,6 +103,4 @@ extension MainTabController: AuthenticationDelegate {
 		fetchUser()
 		self.dismiss(animated: true, completion: nil)
 	}
-	
-	
 }

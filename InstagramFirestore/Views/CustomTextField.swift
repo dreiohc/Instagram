@@ -14,14 +14,14 @@ class CustomTextField: UITextField {
 	init(placeholder: String) {
 		self.__placeholder = placeholder
 		super.init(frame: .zero)
-		setup()
+		setupUI()
 	}
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	private func setup() {
+	private func setupUI() {
 		
 		let spacer = UIView()
 		spacer.setDimensions(height: 50, width: 12)

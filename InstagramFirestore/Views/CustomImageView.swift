@@ -11,7 +11,7 @@ class CustomImageView: UIImageView {
 	
 	override init(image: UIImage?) {
 		super.init(image: image)
-		setup()
+		setupUI()
 	}
 	
 	required init?(coder: NSCoder) {
@@ -19,7 +19,7 @@ class CustomImageView: UIImageView {
 	}
 	
 	
-	func setup() {
+	func setupUI() {
 		backgroundColor = .lightGray
 		contentMode = .scaleToFill
 		clipsToBounds = true

@@ -29,6 +29,8 @@
 		C4650EE02600D07600D278A7 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4650EDA2600C76700D278A7 /* AuthenticationViewModel.swift */; };
 		C46E05E5260053F600DF6945 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46E05E4260053F600DF6945 /* CustomTextField.swift */; };
 		C46E05E926005AA800DF6945 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46E05E826005AA800DF6945 /* UIButton.swift */; };
+		C46EB2CE260983F200E4FBF4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46EB2CD260983F200E4FBF4 /* UserCell.swift */; };
+		C46EB2D8260997C600E4FBF4 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46EB2D7260997C600E4FBF4 /* UserCellViewModel.swift */; };
 		C49846EB25FF675500EDD2F2 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49846EA25FF675500EDD2F2 /* FeedCell.swift */; };
 		C49846F225FF689600EDD2F2 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49846F125FF689600EDD2F2 /* UIViewController.swift */; };
 		C4C2EA192601AF6000FE2527 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2EA182601AF6000FE2527 /* ImageUploader.swift */; };
@@ -65,6 +67,8 @@
 		C4650EDA2600C76700D278A7 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		C46E05E4260053F600DF6945 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		C46E05E826005AA800DF6945 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		C46EB2CD260983F200E4FBF4 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		C46EB2D7260997C600E4FBF4 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 		C49846EA25FF675500EDD2F2 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		C49846F125FF689600EDD2F2 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = ../../../../Downloads/Safari/UIViewController.swift; sourceTree = "<group>"; };
 		C4C2EA182601AF6000FE2527 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			children = (
 				C4650EDA2600C76700D278A7 /* AuthenticationViewModel.swift */,
 				C4D7A2A8260355FA00E3D0D2 /* ProfileHeaderViewModel.swift */,
+				C46EB2D7260997C600E4FBF4 /* UserCellViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 				C46E05E4260053F600DF6945 /* CustomTextField.swift */,
 				C4C2EA352602418D00FE2527 /* CustomImageView.swift */,
 				C4C2EA3826024E0800FE2527 /* CustomLabel.swift */,
+				C46EB2CD260983F200E4FBF4 /* UserCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -348,9 +354,11 @@
 				C4C2EA192601AF6000FE2527 /* ImageUploader.swift in Sources */,
 				C4606876260343CB0066EA90 /* User.swift in Sources */,
 				C4C2EA1C2601AF6A00FE2527 /* AuthService.swift in Sources */,
+				C46EB2CE260983F200E4FBF4 /* UserCell.swift in Sources */,
 				C426D39925FFA5EF00AE15E9 /* RegisterController.swift in Sources */,
 				C4C2EA3326023CBA00FE2527 /* ProfileCell.swift in Sources */,
 				C4C2EA362602418D00FE2527 /* CustomImageView.swift in Sources */,
+				C46EB2D8260997C600E4FBF4 /* UserCellViewModel.swift in Sources */,
 				C426D39625FFA5E600AE15E9 /* LoginController.swift in Sources */,
 				C4650EE02600D07600D278A7 /* AuthenticationViewModel.swift in Sources */,
 				C49846EB25FF675500EDD2F2 /* FeedCell.swift in Sources */,

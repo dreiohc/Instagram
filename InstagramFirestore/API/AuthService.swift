@@ -50,10 +50,7 @@ struct AuthService {
 					COLLECTION_USERS.document(uid).setData(data, completion: completion)
 					return
 				}
-				
 			}
-			COLLECTION_USERS.document(uid).setData(data, completion: completion)
-		
 		}
 		
 		
