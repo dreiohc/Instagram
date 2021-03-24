@@ -46,19 +46,16 @@ class ProfileHeader: UICollectionReusableView {
 	
 	private lazy var postLabel: CustomLabel = {
 		let label = CustomLabel()
-		label.attributedText = attributedStatText(value: 5, label: "posts")
 		return label
 	}()
 	
 	private lazy var followersLabel: CustomLabel = {
 		let label = CustomLabel()
-		label.attributedText = attributedStatText(value: 3, label: "followers")
 		return label
 	}()
 	
 	private lazy var followingLabel: CustomLabel = {
 		let label = CustomLabel()
-		label.attributedText = attributedStatText(value: 2, label: "following")
 		return label
 	}()
 	
@@ -159,16 +156,15 @@ class ProfileHeader: UICollectionReusableView {
 		print("DEBUG: did call configure function...")
 		nameLabel.text = viewModel.fullname
 		profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+		
 		editProfileFollowButton.setTitle(viewModel.followButtonText, for: .normal)
 		editProfileFollowButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)
 		editProfileFollowButton.backgroundColor = viewModel.followButtonBackgroundColor
+		
+		postLabel.attributedText = viewModel.numberOfPosts
+		followersLabel.attributedText = viewModel.numberOfFollowers
+		followingLabel.attributedText = viewModel.numberOfFollowing
 	}
 	
-	func attributedStatText(value: Int, label: String) -> NSAttributedString {
-		let attributedText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
-		attributedText.append(NSAttributedString(string: label,
-																						 attributes: [.font: UIFont.systemFont(ofSize: 14),
-																													.foregroundColor: UIColor.lightGray]))
-		return attributedText
-	}
+
 }

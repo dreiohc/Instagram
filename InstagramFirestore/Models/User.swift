@@ -16,6 +16,7 @@ struct User: Codable {
 	let uid: String
 	var isFollowed: Bool = false
 	var isCurrentUser: Bool { return Auth.auth().currentUser?.uid == uid }
+	var stats: UserStats?
 	
 	enum CodingKeys: String, CodingKey {
 		case email
@@ -25,4 +26,10 @@ struct User: Codable {
 		case profileImageUrl = "profile_image_url"
 	}
 	
+}
+
+struct UserStats {
+	let followers: Int
+	let following: Int
+	//let posts: Int
 }
