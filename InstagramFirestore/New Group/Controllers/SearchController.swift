@@ -32,9 +32,11 @@ class SearchController: UITableViewController {
 	// MARK: - API
 	
 	private func fetchUsers() {
-		UserService.fetchUsers { users in
-			self.users = users
-			self.tableView.reloadData()
+		showLoader(true)
+		UserService.fetchUsers { [weak self] users in
+			self?.showLoader(false)
+			self?.users = users
+			self?.tableView.reloadData()
 		}
 	}
 	

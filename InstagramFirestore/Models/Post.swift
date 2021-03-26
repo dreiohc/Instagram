@@ -1,0 +1,26 @@
+//
+//  Post.swift
+//  InstagramFirestore
+//
+//  Created by Myron Dulay on 3/25/21.
+//
+
+import Firebase
+
+struct Post {
+	var caption: String
+	var likes: Int
+	let imageURL: String
+	let ownerUID: String
+	let timestamp: Timestamp
+	let postID: String
+	
+	init(postID: String, dictionary: [String : Any]) {
+		self.caption = dictionary["caption"] as? String ?? ""
+		self.likes = dictionary["likes"] as? Int ?? 0
+		self.imageURL = dictionary["image_url"] as? String ?? ""
+		self.ownerUID = dictionary["owner_uid"] as? String ?? ""
+		self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
+		self.postID = postID
+	}
+}

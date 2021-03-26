@@ -12,12 +12,16 @@ private let reuseIdentifier = "cell"
 
 class FeedController: UICollectionViewController {
 		
+	// MARK: - Properties
+	
+	private var post = [Post]()
+	
 	// MARK: - Lifecycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		configureUI()
-		
+		fetchPosts()
 	}
 	
 	// MARK: - Actions
@@ -32,6 +36,24 @@ class FeedController: UICollectionViewController {
 			self.present(nav, animated: true, completion: nil)
 		} catch let error {
 			print("DEBUG: \(error.localizedDescription)")
+		}
+	}
+	
+	// MARK: - API
+	
+	private func fetchPosts() {
+		
+		showLoader(true)
+		PostService.fetchPosts { [weak self] (post, error) in
+			self?.showLoader(false)
+			if let error = error {
+				print("DEBUG: error fetching post in controller \(error)")
+				return
+			}
+			guard let post = post else { return }
+			
+			self?.post = post
+			self?.collectionView.reloadData()
 		}
 	}
 	
@@ -54,13 +76,14 @@ class FeedController: UICollectionViewController {
 extension FeedController {
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 5
+		return post.count
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCell
-		
+		let post = self.post[indexPath.row]
+		cell.viewModel = FeedCellViewModel(post: post)
 		return cell
 	}
 }

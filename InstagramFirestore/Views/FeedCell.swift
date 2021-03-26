@@ -11,6 +11,10 @@ class FeedCell: UICollectionViewCell {
 	
 	// MARK: - Properties
 	
+	var viewModel: FeedCellViewModel? {
+		didSet { configure() }
+	}
+	
 	private let profileImageView: UIImageView = {
 		let iv = UIImageView()
 		iv.contentMode = .scaleAspectFill
@@ -33,7 +37,6 @@ class FeedCell: UICollectionViewCell {
 		iv.contentMode = .scaleAspectFill
 		iv.clipsToBounds = true
 		iv.isUserInteractionEnabled = true
-		iv.image = #imageLiteral(resourceName: "venom-7")
 		return iv
 	}()
 	
@@ -60,14 +63,12 @@ class FeedCell: UICollectionViewCell {
 	
 	private let likesLabel: UILabel = {
 		let label = UILabel()
-		label.text = "1 like"
 		label.font = UIFont.boldSystemFont(ofSize: 13)
 		return label
 	}()
 	
 	private let captionLabel: UILabel = {
 		let label = UILabel()
-		label.text = "Some test caption for now.."
 		label.font = UIFont.systemFont(ofSize: 14)
 		return label
 	}()
@@ -143,6 +144,14 @@ class FeedCell: UICollectionViewCell {
 		
 		addSubview(stackView)
 		stackView.anchor(top: postImageView.bottomAnchor, width: 120, height: 50)
+	}
+	
+	private func configure() {
+		guard let viewModel = self.viewModel else { return }
+		postImageView.sd_setImage(with: viewModel.postImageURL)
+		likesLabel.text = viewModel.likesCount
+		captionLabel.text = viewModel.caption
+		
 	}
 	
 }
