@@ -37,6 +37,8 @@
 		C4792A53260B6E98003C0A24 /* UploadPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4792A52260B6E98003C0A24 /* UploadPostController.swift */; };
 		C4792A56260B722D003C0A24 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4792A55260B722D003C0A24 /* InputTextView.swift */; };
 		C47B9AF12615E7D900B3F3F3 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46CFCE9260CA038000AFAA3 /* PostViewModel.swift */; };
+		C47B9AF5261603C100B3F3F3 /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B9AF4261603C100B3F3F3 /* CommentController.swift */; };
+		C47B9AF9261605B200B3F3F3 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B9AF8261605B200B3F3F3 /* CommentCell.swift */; };
 		C49846EB25FF675500EDD2F2 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49846EA25FF675500EDD2F2 /* FeedCell.swift */; };
 		C49846F225FF689600EDD2F2 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49846F125FF689600EDD2F2 /* UIViewController.swift */; };
 		C4A2C8D0260D90C400E85529 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A2C8CF260D90C400E85529 /* Calculator.swift */; };
@@ -99,6 +101,8 @@
 		C46EB2D7260997C600E4FBF4 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 		C4792A52260B6E98003C0A24 /* UploadPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostController.swift; sourceTree = "<group>"; };
 		C4792A55260B722D003C0A24 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
+		C47B9AF4261603C100B3F3F3 /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
+		C47B9AF8261605B200B3F3F3 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		C49846EA25FF675500EDD2F2 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		C49846F125FF689600EDD2F2 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = ../../../../Downloads/Safari/UIViewController.swift; sourceTree = "<group>"; };
 		C4A2C8CF260D90C400E85529 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 				C40024F025FF3B8F00E5763A /* NotificationController.swift */,
 				C40024F325FF3BA700E5763A /* ProfileController.swift */,
 				C4792A52260B6E98003C0A24 /* UploadPostController.swift */,
+				C47B9AF4261603C100B3F3F3 /* CommentController.swift */,
 			);
 			name = Controllers;
 			path = "New Group/Controllers";
@@ -222,6 +227,7 @@
 				C4C2EA352602418D00FE2527 /* CustomImageView.swift */,
 				C4C2EA3826024E0800FE2527 /* CustomLabel.swift */,
 				C46EB2CD260983F200E4FBF4 /* UserCell.swift */,
+				C47B9AF8261605B200B3F3F3 /* CommentCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -510,7 +516,9 @@
 				C49846EB25FF675500EDD2F2 /* FeedCell.swift in Sources */,
 				C46E05E926005AA800DF6945 /* UIButton.swift in Sources */,
 				C40024EE25FF3B8300E5763A /* ImageSelectorController.swift in Sources */,
+				C47B9AF5261603C100B3F3F3 /* CommentController.swift in Sources */,
 				C4D7A2A9260355FA00E3D0D2 /* ProfileHeaderViewModel.swift in Sources */,
+				C47B9AF9261605B200B3F3F3 /* CommentCell.swift in Sources */,
 				C40024F125FF3B8F00E5763A /* NotificationController.swift in Sources */,
 				C40024EB25FF3B7000E5763A /* SearchController.swift in Sources */,
 				C4C2EA302602394800FE2527 /* ProfileHeader.swift in Sources */,
