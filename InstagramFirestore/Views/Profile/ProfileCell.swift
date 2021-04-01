@@ -11,7 +11,11 @@ class ProfileCell: UICollectionViewCell {
 	
 	// MARK: - Properties
 	
-	private let postImageView = CustomImageView(image: #imageLiteral(resourceName: "venom-7"))
+	var viewModel: PostViewModel? {
+		didSet { configure() }
+	}
+	
+	private let postImageView = CustomImageView(image: nil)
 
 	// MARK: - Lifecycle
 	
@@ -26,4 +30,10 @@ class ProfileCell: UICollectionViewCell {
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+	
+	private func configure() {
+		guard let viewModel = viewModel else { return }
+		postImageView.sd_setImage(with: viewModel.postImageURL, completed: nil)
+	}
+	
 }

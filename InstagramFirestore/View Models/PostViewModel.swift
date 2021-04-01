@@ -7,21 +7,29 @@
 
 import Foundation
 
-struct FeedCellViewModel {
+struct PostViewModel {
 	
 	private let post: Post
 	
 	var postImageURL: URL? { return URL(string: post.imageURL) }
 	
-	var likesCount: String { return String(post.likes) }
+	var userProfileImageURL: URL? { return URL(string: post.ownerImageURL) }
+	
+	var username: String { return post.ownerUsername }
 	
 	var caption: String { return post.caption }
 	
-//	var timestamp: String {
-//		return "\(post.timestamp)"
-//	}
+	var likesLabelText: String {
+		if post.likes != 1 {
+			return "\(post.likes) likes"
+		} else {
+			return "\(post.likes) like"
+		}
+	}
 	
 	init(post: Post) {
 		self.post = post
 	}
+	
+	
 }

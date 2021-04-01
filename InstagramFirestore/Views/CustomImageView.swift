@@ -2,7 +2,7 @@
 //  CustomImageView.swift
 //  InstagramFirestore
 //
-//  Created by Myron Dulay on 3/17/21.
+//  Created by Myrorn Dulay on 3/17/21.
 //
 
 import UIKit
@@ -17,7 +17,7 @@ class CustomImageView: UIImageView {
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
+
 	
 	func setupUI() {
 		backgroundColor = .lightGray

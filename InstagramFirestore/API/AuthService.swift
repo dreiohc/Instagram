@@ -8,6 +8,11 @@
 import UIKit
 import Firebase
 
+
+protocol AuthServiceProtocol {
+	static func logUserIn(withEmail email: String, password: String, completion: AuthDataResultCallback?)
+}
+
 struct AuthCredentials {
 	let email: String
 	let password: String
@@ -57,3 +62,4 @@ struct AuthService {
 		
 	}
 }
+

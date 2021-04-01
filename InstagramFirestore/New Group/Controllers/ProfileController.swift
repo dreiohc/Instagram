@@ -15,6 +15,7 @@ class ProfileController: UICollectionViewController {
 	// MARK: - Properties
 	
 	private var user: User
+	private var posts = [Post]()
 	
 	// MARK: - Lifecycle
 	
@@ -32,6 +33,7 @@ class ProfileController: UICollectionViewController {
 		checkIfUserIsFollowed()
 		configureCollectionView()
 		fetchUserStats()
+		fetchPosts()
 	}
 	
 	// MARK: - API
@@ -47,11 +49,17 @@ class ProfileController: UICollectionViewController {
 		UserService.fetchUserStats(uid: user.uid) { [weak self] stats in
 			self?.user.stats = stats
 			self?.collectionView.reloadData()
-			
-			print("DEBUG: Stats \(stats)")
 		}
 	}
 
+	private func fetchPosts() {
+		showLoader(true)
+		PostService.fetchPosts(forUser: user.uid) { [weak self] posts in
+			self?.showLoader(false )
+			self?.posts = posts
+			self?.collectionView.reloadData()
+		}
+	}
 	
 	// MARK: - Helpers
 	
@@ -70,11 +78,13 @@ class ProfileController: UICollectionViewController {
 extension ProfileController {
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 9
+		return posts.count
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! ProfileCell
+		let post = posts[indexPath.row]
+		cell.viewModel = PostViewModel(post: post)
 		return cell
 	}
 	
@@ -92,6 +102,12 @@ extension ProfileController {
 // MARK: - UICollectionViewDelegate
 
 extension ProfileController {
+	
+	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let controller = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
+		controller.post = posts[indexPath.row]
+		navigationController?.pushViewController(controller, animated: true)
+	}
 	
 }
 

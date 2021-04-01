@@ -92,6 +92,7 @@ class LoginController: UIViewController {
 				print("DEBUG: Failed to log user in \(error.localizedDescription)")
 				return
 			}
+			print("DEBUG: login user result here \(result)")
 			self?.delegate?.authenticationComplete()
 		}
 	}
