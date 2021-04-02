@@ -27,7 +27,6 @@
 		C4606876260343CB0066EA90 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4606875260343CB0066EA90 /* User.swift */; };
 		C462D46A2601A11800469EC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C462D4692601A11800469EC0 /* GoogleService-Info.plist */; };
 		C46351A826171E3200EC18C8 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C46351A726171E3200EC18C8 /* .swiftlint.yml */; };
-		C46352672617301D00EC18C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C46352662617301D00EC18C8 /* Main.storyboard */; };
 		C4650EE02600D07600D278A7 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4650EDA2600C76700D278A7 /* AuthenticationViewModel.swift */; };
 		C46CFCE4260C53EF000AFAA3 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46CFCE3260C53EF000AFAA3 /* PostService.swift */; };
 		C46CFCE7260C913B000AFAA3 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46CFCE6260C913B000AFAA3 /* Post.swift */; };
@@ -92,7 +91,6 @@
 		C4606875260343CB0066EA90 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C462D4692601A11800469EC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Users/myrondulay/Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C46351A726171E3200EC18C8 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		C46352662617301D00EC18C8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../.Trashes/501/Main.storyboard; sourceTree = "<group>"; };
 		C4650EDA2600C76700D278A7 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		C46CFCE3260C53EF000AFAA3 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		C46CFCE6260C913B000AFAA3 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 				C40024C525FF362300E5763A /* SceneDelegate.swift */,
 				C4C2EA212601D75700FE2527 /* Constants.swift */,
 				C40024CC25FF362500E5763A /* Assets.xcassets */,
-				C46352662617301D00EC18C8 /* Main.storyboard */,
 				C40024CE25FF362500E5763A /* LaunchScreen.storyboard */,
 				C40024D125FF362500E5763A /* Info.plist */,
 			);
@@ -408,7 +405,6 @@
 				C46351A826171E3200EC18C8 /* .swiftlint.yml in Resources */,
 				C43E188A2617153700BAB2D7 /* .gitignore in Resources */,
 				C40024D025FF362500E5763A /* LaunchScreen.storyboard in Resources */,
-				C46352672617301D00EC18C8 /* Main.storyboard in Resources */,
 				C462D46A2601A11800469EC0 /* GoogleService-Info.plist in Resources */,
 				C40024CD25FF362500E5763A /* Assets.xcassets in Resources */,
 			);
