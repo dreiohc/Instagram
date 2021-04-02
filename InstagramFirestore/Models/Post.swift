@@ -16,8 +16,8 @@ struct Post {
 	let postID: String
 	let ownerImageURL: String
 	let ownerUsername: String
-	
-	init(postID: String, dictionary: [String : Any]) {
+
+	init(postID: String, dictionary: [String: Any]) {
 		self.caption = dictionary["caption"] as? String ?? ""
 		self.likes = dictionary["likes"] as? Int ?? 0
 		self.imageURL = dictionary["image_url"] as? String ?? ""

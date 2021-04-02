@@ -8,9 +8,9 @@
 import Foundation
 
 class Calculator {
-	
+
 	func add(_ firstNum: Int, _ secondNum: Int) -> Int {
 		return firstNum + secondNum
 	}
-	
+
 }

@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 
 struct User: Codable {
-	
+
 	let email: String
 	let fullname: String
 	let username: String
@@ -18,7 +18,7 @@ struct User: Codable {
 	var isFollowed: Bool = false
 	var isCurrentUser: Bool { return Auth.auth().currentUser?.uid == uid }
 	var stats: UserStats?
-	
+
 	enum CodingKeys: String, CodingKey {
 		case email
 		case fullname

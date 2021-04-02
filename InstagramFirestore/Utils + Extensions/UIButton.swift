@@ -8,23 +8,23 @@
 import UIKit
 
 extension UIButton {
-	
+
 	func attrbutedTitle(firstPart: String, secondPart: String) {
-		
+
 		let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.87),
 																										 .font: UIFont.systemFont(ofSize: 16)]
-		
+
 		let attrbutedTitle = NSMutableAttributedString(string: "\(firstPart)  ", attributes: attributes)
-		
+
 		let boldAttributes: [NSMutableAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7),
 																																.font: UIFont.boldSystemFont(ofSize: 16)]
-		
+
 		attrbutedTitle.append(NSAttributedString(string: "\(secondPart)", attributes: boldAttributes))
-		
+
 		setAttributedTitle(attrbutedTitle, for: .normal)
-		
+
 	}
-	
+
 	func autoshrinkButton() -> UIButton {
 		self.titleLabel?.adjustsFontSizeToFitWidth = true
 		self.titleLabel?.lineBreakMode = .byClipping
@@ -32,7 +32,7 @@ extension UIButton {
 		self.titleLabel?.minimumScaleFactor = 0.2
 		return self
 	}
-	
+
 	func basicButton(title: String) {
 		setTitle(title, for: .normal)
 		setTitleColor(UIColor(white: 1, alpha: 0.67), for: .normal)
@@ -42,7 +42,7 @@ extension UIButton {
 		titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
 		isEnabled = false
 	}
-	
+
 	func isEnabledOnlyIf(_ formIsValid: Bool) {
 		if formIsValid {
 			backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)

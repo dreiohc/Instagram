@@ -21,6 +21,7 @@ target 'InstagramFirestore' do
 	pod 'SDWebImage', '~>4.4.2'
 	pod 'ActiveLabel'
 	pod 'YPImagePicker'
+	pod 'SwiftLint'
 	
 	target 'InstagramFirestoreTest' do
 		inherit! :search_paths

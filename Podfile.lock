@@ -310,6 +310,7 @@ PODS:
     - SDWebImage/Core (= 4.4.8)
   - SDWebImage/Core (4.4.8)
   - SteviaLayout (4.7.3)
+  - SwiftLint (0.42.0)
   - YPImagePicker (4.4.0):
     - PryntTrimmerView (~> 4.0.2)
     - SteviaLayout (~> 4.7.3)
@@ -326,6 +327,7 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - JGProgressHUD (~> 2.0.3)
   - SDWebImage (~> 4.4.2)
+  - SwiftLint
   - YPImagePicker
 
 SPEC REPOS:
@@ -361,6 +363,7 @@ SPEC REPOS:
     - PryntTrimmerView
     - SDWebImage
     - SteviaLayout
+    - SwiftLint
     - YPImagePicker
 
 SPEC CHECKSUMS:
@@ -395,8 +398,9 @@ SPEC CHECKSUMS:
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
+  SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: 8dbcef74cb7f1889fb31fe0ef01a8ec474e03642
+PODFILE CHECKSUM: 4dcdf3ce682001ae1e9972c159540e1e3c87a0ce
 
 COCOAPODS: 1.8.4

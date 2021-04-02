@@ -14,7 +14,6 @@ class MockAuthService {
 	var shouldReturnError = false
 	var loginWasCalled = false
 	
-	
 	func reset() {
 		shouldReturnError = false
 		loginWasCalled = false
@@ -28,16 +27,12 @@ class MockAuthService {
 		self.shouldReturnError = shouldReturnError
 	}
 	
-	
-	
 }
-
 
 extension MockAuthService: AuthServiceProtocol {
 	
 	static func logUserIn(withEmail email: String, password: String, completion: AuthDataResultCallback?) {
 		
 	}
-	
 	
 }
