@@ -41,7 +41,6 @@
 		C47B9AF9261605B200B3F3F3 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B9AF8261605B200B3F3F3 /* CommentCell.swift */; };
 		C49846EB25FF675500EDD2F2 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49846EA25FF675500EDD2F2 /* FeedCell.swift */; };
 		C49846F225FF689600EDD2F2 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49846F125FF689600EDD2F2 /* UIViewController.swift */; };
-		C4A2C8D0260D90C400E85529 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A2C8CF260D90C400E85529 /* Calculator.swift */; };
 		C4A2C8D5260D931D00E85529 /* MockAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A2C8D4260D931D00E85529 /* MockAuthService.swift */; };
 		C4C2EA192601AF6000FE2527 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2EA182601AF6000FE2527 /* ImageUploader.swift */; };
 		C4C2EA1C2601AF6A00FE2527 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2EA1B2601AF6A00FE2527 /* AuthService.swift */; };
@@ -105,7 +104,6 @@
 		C47B9AF8261605B200B3F3F3 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		C49846EA25FF675500EDD2F2 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		C49846F125FF689600EDD2F2 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = ../../../../Downloads/Safari/UIViewController.swift; sourceTree = "<group>"; };
-		C4A2C8CF260D90C400E85529 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		C4A2C8D4260D931D00E85529 /* MockAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthService.swift; sourceTree = "<group>"; };
 		C4C2EA182601AF6000FE2527 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		C4C2EA1B2601AF6A00FE2527 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -259,7 +257,6 @@
 				C49846F125FF689600EDD2F2 /* UIViewController.swift */,
 				C46E05E826005AA800DF6945 /* UIButton.swift */,
 				C4792A55260B722D003C0A24 /* InputTextView.swift */,
-				C4A2C8CF260D90C400E85529 /* Calculator.swift */,
 			);
 			path = "Utils + Extensions";
 			sourceTree = "<group>";
@@ -529,7 +526,6 @@
 				C4C2EA192601AF6000FE2527 /* ImageUploader.swift in Sources */,
 				C4606876260343CB0066EA90 /* User.swift in Sources */,
 				C47B9AF12615E7D900B3F3F3 /* PostViewModel.swift in Sources */,
-				C4A2C8D0260D90C400E85529 /* Calculator.swift in Sources */,
 				C4C2EA1C2601AF6A00FE2527 /* AuthService.swift in Sources */,
 				C4792A56260B722D003C0A24 /* InputTextView.swift in Sources */,
 				C46EB2CE260983F200E4FBF4 /* UserCell.swift in Sources */,

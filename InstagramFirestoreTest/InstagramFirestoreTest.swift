@@ -10,11 +10,11 @@ import Firebase
 @testable import InstagramFirestore
 
 class InstagramFirestoreTest: XCTestCase {
-	
+
 	override func setUpWithError() throws {
 		super.setUp()
 	}
-	
+
 	func test_should_login_successfully() {
 		let expectation = self.expectation(description: "login")
 		var isLoginSuccess = false
@@ -24,11 +24,11 @@ class InstagramFirestoreTest: XCTestCase {
 			}
 			expectation.fulfill()
 		}
-		
+
 		waitForExpectations(timeout: 5, handler: nil)
 		XCTAssertTrue(isLoginSuccess)
 	}
-	
+
 	func test_should_signout_successfully() {
 		let expectation = self.expectation(description: "signout")
 		var isSignOutSuccess = true
@@ -41,9 +41,9 @@ class InstagramFirestoreTest: XCTestCase {
 		waitForExpectations(timeout: 5, handler: nil)
 		XCTAssertTrue(isSignOutSuccess)
 	}
-	
+
 	override func tearDownWithError() throws {
-		
+
 	}
-	
+
 }
