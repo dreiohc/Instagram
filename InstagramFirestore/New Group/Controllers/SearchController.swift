@@ -9,22 +9,31 @@ import UIKit
 
 private let reuseIdentifier = "UserCell"
 
+fileprivate typealias UserDataSource = UITableViewDiffableDataSource<SearchController.Section, User>
+fileprivate typealias UsersSnapshot = NSDiffableDataSourceSnapshot<SearchController.Section, User>
+
 class SearchController: UITableViewController {
 	
 	// MARK: - Properties
 	
 	private var users = [User]()
+	
 	private var filteredUsers = [User]()
+	
 	private let searchController = UISearchController(searchResultsController: nil)
+	
 	private var inSearchMode: Bool {
 		return searchController.isActive && !searchController.searchBar.text!.isEmpty
 	}
+	
+	private var dataSource: UserDataSource!
 	
 	// MARK: - Lifecycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		configureSearchController()
+		configureDataSource()
 		configureTableView()
 		fetchUsers()
 	}
@@ -36,7 +45,7 @@ class SearchController: UITableViewController {
 		UserService.fetchUsers { [weak self] users in
 			self?.showLoader(false)
 			self?.users = users
-			self?.tableView.reloadData()
+			self?.createSnapshot(from: users)
 		}
 	}
 	
@@ -48,6 +57,15 @@ class SearchController: UITableViewController {
 		tableView.rowHeight = 64
 	}
 	
+	private func configureDataSource() {
+		dataSource = UserDataSource(tableView: tableView, cellProvider: { (tableView, indexPath, user) -> UITableViewCell? in
+			let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserCell
+			let user = self.inSearchMode ? self.filteredUsers[indexPath.row] : self.users[indexPath.row]
+			cell.viewModel = UserCellViewModel(user: user)
+			return cell
+		})
+	}
+	
 	private func configureSearchController() {
 		searchController.searchResultsUpdater = self
 		searchController.obscuresBackgroundDuringPresentation = false
@@ -57,19 +75,18 @@ class SearchController: UITableViewController {
 		definesPresentationContext = false
 	}
 	
+	private func createSnapshot(from users: [User]) {
+		var snapshot = UsersSnapshot()
+		snapshot.appendSections([.main])
+		snapshot.appendItems(users)
+		dataSource.apply(snapshot, animatingDifferences: false)
+	}
+	
 }
 
 // MARK: - UITableViewDataSource
 
 extension SearchController {
-	
-	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserCell
-		
-		let user = inSearchMode ? filteredUsers[indexPath.row] : users[indexPath.row]
-		cell.viewModel = UserCellViewModel(user: user)
-		return cell
-	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return inSearchMode ? filteredUsers.count : users.count
@@ -80,7 +97,8 @@ extension SearchController {
 
 extension SearchController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let user = inSearchMode ? filteredUsers[indexPath.row] : users[indexPath.row]
+		guard let nonFilteredUser = dataSource.itemIdentifier(for: indexPath) else { return }
+		let user = inSearchMode ? filteredUsers[indexPath.row] : nonFilteredUser
 		let controller = ProfileController(user: user)
 		navigationController?.pushViewController(controller, animated: true)
 	}
@@ -95,6 +113,16 @@ extension SearchController: UISearchResultsUpdating {
 		filteredUsers = users.filter( {$0.username.lowercased().contains(searchText)
 																		|| $0.fullname.lowercased().contains(searchText) })
 		
-		self.tableView.reloadData()
+		let users = searchText.isEmpty ? self.users : filteredUsers
+		
+		self.createSnapshot(from: users)
+	}
+}
+
+// MARK: - Sections
+
+extension SearchController {
+	fileprivate enum Section {
+		case main
 	}
 }

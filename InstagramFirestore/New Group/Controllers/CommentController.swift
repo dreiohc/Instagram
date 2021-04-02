@@ -48,7 +48,6 @@ extension CommentController {
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CommentCell
-		cell.backgroundColor = .systemRed
 		return cell
 	}
 }

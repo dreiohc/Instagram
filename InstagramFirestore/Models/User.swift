@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 
 struct User: Codable {
+	
 	let email: String
 	let fullname: String
 	let username: String
@@ -25,10 +26,23 @@ struct User: Codable {
 		case uid
 		case profileImageUrl = "profile_image_url"
 	}
-	
 }
 
-struct UserStats {
+extension User: Hashable {
+	static func == (lhs: User, rhs: User) -> Bool {
+		return
+			lhs.isCurrentUser == rhs.isCurrentUser &&
+			lhs.isFollowed == rhs.isFollowed &&
+			lhs.email == rhs.email &&
+			lhs.fullname == rhs.fullname &&
+			lhs.profileImageUrl == rhs.profileImageUrl &&
+			lhs.stats == rhs.stats &&
+			lhs.isCurrentUser == rhs.isCurrentUser &&
+			lhs.uid == rhs.uid
+	}
+}
+
+struct UserStats: Hashable {
 	let followers: Int
 	let following: Int
 	let posts: Int
