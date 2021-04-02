@@ -98,7 +98,8 @@ extension SearchController {
 extension SearchController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard let nonFilteredUser = dataSource.itemIdentifier(for: indexPath) else { return }
-		let user = inSearchMode ? filteredUsers[indexPath.row] : nonFilteredUser
+		let filteredUser = self.filteredUsers[indexPath.row]
+		let user = inSearchMode ? filteredUser : nonFilteredUser
 		let controller = ProfileController(user: user)
 		navigationController?.pushViewController(controller, animated: true)
 	}
@@ -119,7 +120,7 @@ extension SearchController: UISearchResultsUpdating {
 	}
 }
 
-// MARK: - Sections
+// MARK: - CollectionView Sections
 
 extension SearchController {
 	fileprivate enum Section {
