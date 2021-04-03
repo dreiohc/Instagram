@@ -3,4 +3,86 @@
    uuid = "AC19CB09-B033-4AFF-BEBC-F615DE2B06A0"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7B490E24-88AB-4FCD-B89F-D09727BCD2DB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "InstagramFirestore/New Group/Controllers/CommentController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "inputView(_:wantsToUploadComment:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7B490E24-88AB-4FCD-B89F-D09727BCD2DB - 9a9958011fd9117c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "InstagramFirestore.CommentController.inputView(_: InstagramFirestore.CommentInputAccessoryView, wantsToUploadComment: Swift.String) -&gt; ()"
+                  moduleName = "InstagramFirestore"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Local%20SD/Practice%20Coding/InstagramFirestore/InstagramFirestore/New%20Group/Controllers/CommentController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "626">
+               </Location>
+               <Location
+                  uuid = "7B490E24-88AB-4FCD-B89F-D09727BCD2DB - dfe3cc7a0a95d389"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in InstagramFirestore.CommentController.inputView(_: InstagramFirestore.CommentInputAccessoryView, wantsToUploadComment: Swift.String) -&gt; ()"
+                  moduleName = "InstagramFirestore"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Local%20SD/Practice%20Coding/InstagramFirestore/InstagramFirestore/New%20Group/Controllers/CommentController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "81">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "71317A46-44DF-4DD6-876C-E29FD1C585E4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "InstagramFirestore/Views/CustomLabel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "setupUI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5149A372-1999-4CD5-A8AF-0243561640C0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "InstagramFirestore/New Group/Controllers/Authentication/RegisterController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "RegistrationController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
