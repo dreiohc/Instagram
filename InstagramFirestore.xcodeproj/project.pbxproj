@@ -20,7 +20,6 @@
 		C40024F425FF3BA700E5763A /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40024F325FF3BA700E5763A /* ProfileController.swift */; };
 		C426D39625FFA5E600AE15E9 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C426D39525FFA5E600AE15E9 /* LoginController.swift */; };
 		C426D39925FFA5EF00AE15E9 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C426D39825FFA5EF00AE15E9 /* RegisterController.swift */; };
-		C43E188A2617153700BAB2D7 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C43E18892617153600BAB2D7 /* .gitignore */; };
 		C457CBC9260D8CF700D4651F /* InstagramFirestoreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C457CBC8260D8CF700D4651F /* InstagramFirestoreTest.swift */; };
 		C460684826033FCE0066EA90 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C460684726033FCE0066EA90 /* UserService.swift */; };
 		C4606850260340C90066EA90 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2EA212601D75700FE2527 /* Constants.swift */; };
@@ -84,7 +83,6 @@
 		C40024F325FF3BA700E5763A /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		C426D39525FFA5E600AE15E9 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		C426D39825FFA5EF00AE15E9 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
-		C43E18892617153600BAB2D7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C457CBC6260D8CF600D4651F /* InstagramFirestoreTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstagramFirestoreTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C457CBC8260D8CF700D4651F /* InstagramFirestoreTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramFirestoreTest.swift; sourceTree = "<group>"; };
 		C457CBCA260D8CF700D4651F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 				C40024C125FF362300E5763A /* Products */,
 				B07DCA4E4D3DA38659587275 /* Pods */,
 				CC2DD8A17015D29193570C7A /* Frameworks */,
-				C43E18882617143E00BAB2D7 /* Git */,
 			);
 			sourceTree = "<group>";
 		};
@@ -274,14 +271,6 @@
 				C426D39825FFA5EF00AE15E9 /* RegisterController.swift */,
 			);
 			path = Authentication;
-			sourceTree = "<group>";
-		};
-		C43E18882617143E00BAB2D7 /* Git */ = {
-			isa = PBXGroup;
-			children = (
-				C43E18892617153600BAB2D7 /* .gitignore */,
-			);
-			path = Git;
 			sourceTree = "<group>";
 		};
 		C457CBC7260D8CF600D4651F /* InstagramFirestoreTest */ = {
@@ -406,7 +395,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C46351A826171E3200EC18C8 /* .swiftlint.yml in Resources */,
-				C43E188A2617153700BAB2D7 /* .gitignore in Resources */,
 				C40024D025FF362500E5763A /* LaunchScreen.storyboard in Resources */,
 				C462D46A2601A11800469EC0 /* GoogleService-Info.plist in Resources */,
 				C40024CD25FF362500E5763A /* Assets.xcassets in Resources */,
