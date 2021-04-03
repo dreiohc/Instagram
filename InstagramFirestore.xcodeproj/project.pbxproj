@@ -40,6 +40,7 @@
 		C47B9AF5261603C100B3F3F3 /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B9AF4261603C100B3F3F3 /* CommentController.swift */; };
 		C47B9AF9261605B200B3F3F3 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B9AF8261605B200B3F3F3 /* CommentCell.swift */; };
 		C47C408426188FC000711DD8 /* CommentInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C408326188FC000711DD8 /* CommentInputAccessoryView.swift */; };
+		C47C40882618B0B100711DD8 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47C40872618B0B100711DD8 /* CommentService.swift */; };
 		C49846EB25FF675500EDD2F2 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49846EA25FF675500EDD2F2 /* FeedCell.swift */; };
 		C49846F225FF689600EDD2F2 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49846F125FF689600EDD2F2 /* UIViewController.swift */; };
 		C4A2C8D5260D931D00E85529 /* MockAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A2C8D4260D931D00E85529 /* MockAuthService.swift */; };
@@ -104,6 +105,7 @@
 		C47B9AF4261603C100B3F3F3 /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
 		C47B9AF8261605B200B3F3F3 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		C47C408326188FC000711DD8 /* CommentInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputAccessoryView.swift; sourceTree = "<group>"; };
+		C47C40872618B0B100711DD8 /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
 		C49846EA25FF675500EDD2F2 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		C49846F125FF689600EDD2F2 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = ../../../../Downloads/Safari/UIViewController.swift; sourceTree = "<group>"; };
 		C4A2C8D4260D931D00E85529 /* MockAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthService.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				C4C2EA1B2601AF6A00FE2527 /* AuthService.swift */,
 				C460684726033FCE0066EA90 /* UserService.swift */,
 				C46CFCE3260C53EF000AFAA3 /* PostService.swift */,
+				C47C40872618B0B100711DD8 /* CommentService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				C40024F425FF3BA700E5763A /* ProfileController.swift in Sources */,
 				C40024E825FF3B5E00E5763A /* FeedController.swift in Sources */,
 				C460684826033FCE0066EA90 /* UserService.swift in Sources */,
+				C47C40882618B0B100711DD8 /* CommentService.swift in Sources */,
 				C40024E525FF374A00E5763A /* MainTabController.swift in Sources */,
 				C49846F225FF689600EDD2F2 /* UIViewController.swift in Sources */,
 				C40024C625FF362300E5763A /* SceneDelegate.swift in Sources */,

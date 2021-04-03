@@ -13,13 +13,25 @@ class CommentController: UICollectionViewController {
 
 	// MARK: - Properties
 
+	private let post: Post
+
 	private lazy var commentInputView: CommentInputAccessoryView = {
 		let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
 		let cv = CommentInputAccessoryView(frame: frame)
+		cv.delegate = self
 		return cv
 	}()
 
 	// MARK: - Lifecycle
+
+	init(post: Post) {
+		self.post = post
+		super.init(collectionViewLayout: UICollectionViewFlowLayout())
+	}
+
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -52,6 +64,8 @@ class CommentController: UICollectionViewController {
 		navigationItem.title = "Comments"
 		collectionView.backgroundColor = .white
 		collectionView.register(CommentCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+		collectionView.alwaysBounceVertical = true
+		collectionView.keyboardDismissMode = .interactive
 	}
 
 }
@@ -78,4 +92,21 @@ extension CommentController: UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		return CGSize(width: view.frame.width, height: 80)
 	}
+}
+
+// MARK: - CommentInputAccessoryViewDelegate
+
+extension CommentController: CommentInputAccessoryViewDelegate {
+	func inputView(_ inputView: CommentInputAccessoryView, wantsToUploadComment comment: String) {
+		guard let tab = self.tabBarController as? MainTabController else { return }
+		guard let user = tab.user else { return }
+
+		showLoader(true)
+
+		CommentService.uploadComment(comment: comment, postID: post.postID, user: user) { [weak self] _ in
+			self?.showLoader(false)
+			inputView.clearCommentsTextView()
+		}
+	}
+
 }

@@ -33,7 +33,6 @@ struct PostService {
 			case .failure(let error):
 				completion(error)
 			}
-
 		}
 	}
 
@@ -48,7 +47,6 @@ struct PostService {
 
 			let posts = documents.map({ Post(postID: $0.documentID, dictionary: $0.data())})
 			completion(posts, nil)
-
 		}
 	}
 
