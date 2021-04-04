@@ -11,6 +11,8 @@ struct ProfileHeaderViewModel {
 
 	let user: User
 
+	private let userStats: UserStats?
+
 	var fullname: String {
 		return user.fullname
 	}
@@ -36,19 +38,20 @@ struct ProfileHeaderViewModel {
 	}
 
 	var numberOfFollowers: NSAttributedString {
-		return attributedStatText(value: user.stats?.followers ?? 0, label: "followers")
+		return attributedStatText(value: userStats?.followers ?? 0, label: "followers")
 	}
 
 	var numberOfFollowing: NSAttributedString {
-		return attributedStatText(value: user.stats?.following ?? 0, label: "following")
+		return attributedStatText(value: userStats?.following ?? 0, label: "following")
 	}
 
 	var numberOfPosts: NSAttributedString {
-		return attributedStatText(value: user.stats?.posts ?? 0, label: "posts")
+		return attributedStatText(value: userStats?.posts ?? 0, label: "posts")
 	}
 
 	init(user: User) {
 		self.user = user
+		self.userStats = user[keyPath: \User.stats?]
 	}
 
 	func attributedStatText(value: Int, label: String) -> NSAttributedString {
