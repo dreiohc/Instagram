@@ -14,7 +14,10 @@ class FeedController: UICollectionViewController {
 
 	// MARK: - Properties
 
-	private var posts = [Post]()
+	private var posts = [Post]() {
+		didSet { collectionView.reloadData() }
+	}
+
 	var post: Post?
 
 	// MARK: - Lifecycle
@@ -59,15 +62,25 @@ class FeedController: UICollectionViewController {
 			self?.showLoader(false)
 			self?.collectionView.refreshControl?.endRefreshing()
 
+			guard let posts = posts else { return }
+
 			if let error = error {
 				print(error.localizedDescription)
 				return
 			}
-
-			guard let posts = posts else { return }
-
 			self?.posts = posts
-			self?.collectionView.reloadData()
+			self?.checkIfUserLikedPosts()
+		}
+	}
+
+	private func checkIfUserLikedPosts() {
+		self.posts.forEach { post in
+			PostService.checkIfUserLikedPost(post: post) { didLike in
+				print("DEBUG: post with caption \(post.caption) is like? = \(didLike)")
+				if let index = self.posts.firstIndex(where: { $0.postID == post.postID }) {
+					self.posts[index].didLike = didLike
+				}
+			}
 		}
 	}
 
@@ -136,15 +149,20 @@ extension FeedController: FeedCellDelegate {
 	func cell(_ cell: FeedCell, didLike post: Post) {
 		cell.viewModel?.post.didLike.toggle()
 		if post.didLike {
-
+			PostService.unlikePost(post: post) { error in
+				if let error = error {
+					print("DEBUG: failed to unlike post \(error.localizedDescription)")
+					return
+				}
+				cell.viewModel?.post.likes = post.likes - 1
+			}
 		} else {
 			PostService.likePost(post: post) { error in
 				if let error = error {
 					print("DEBUG: failed to like post \(error.localizedDescription)")
 					return
 				}
-				cell.likeButton.setImage(#imageLiteral(resourceName: "like_selected"), for: .normal)
-				cell.likeButton.tintColor = .systemRed
+				cell.viewModel?.post.likes = post.likes + 1
 			}
 		}
 	}
