@@ -76,7 +76,6 @@ class FeedController: UICollectionViewController {
 	private func checkIfUserLikedPosts() {
 		self.posts.forEach { post in
 			PostService.checkIfUserLikedPost(post: post) { didLike in
-				print("DEBUG: post with caption \(post.caption) is like? = \(didLike)")
 				if let index = self.posts.firstIndex(where: { $0.postID == post.postID }) {
 					self.posts[index].didLike = didLike
 				}
@@ -119,7 +118,6 @@ extension FeedController {
 		cell.delegate = self
 		if let post = post {
 			cell.viewModel = PostViewModel(post: post)
-
 		} else {
 			cell.viewModel = PostViewModel(post: posts[indexPath.row])
 		}
@@ -146,7 +144,18 @@ extension FeedController: UICollectionViewDelegateFlowLayout {
 
 extension FeedController: FeedCellDelegate {
 
+	func cell(_ cell: FeedCell, wantsToShowProfileFor uid: String) {
+		UserService.fetchUser(withUid: uid) { [weak self] user in
+			let controller = ProfileController(user: user)
+			self?.navigationController?.pushViewController(controller, animated: true)
+		}
+	}
+
 	func cell(_ cell: FeedCell, didLike post: Post) {
+
+		guard let tab = tabBarController as? MainTabController else { return }
+		guard let user = tab.user else { return }
+
 		cell.viewModel?.post.didLike.toggle()
 		if post.didLike {
 			PostService.unlikePost(post: post) { error in
@@ -163,6 +172,11 @@ extension FeedController: FeedCellDelegate {
 					return
 				}
 				cell.viewModel?.post.likes = post.likes + 1
+
+				NotificationService.uploadNotification(toUid: post.ownerUID,
+																							 fromUser: user,
+																							 type: .like,
+																							 post: post)
 			}
 		}
 	}
