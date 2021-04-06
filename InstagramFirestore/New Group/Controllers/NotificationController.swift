@@ -22,6 +22,8 @@ class NotificationController: UITableViewController {
 		didSet { createSnapshot(from: notifications) }
 	}
 
+	private let refresher = UIRefreshControl()
+
 	// MARK: - Lifecycle
 
 	override func viewDidLoad() {
@@ -52,14 +54,25 @@ class NotificationController: UITableViewController {
 		}
 	}
 
+	// MARK: - Actions
+
+	@objc func handleRefresh() {
+		fetchNotifications()
+		refresher.endRefreshing()
+	}
+
 	// MARK: - Helpers
 
 	private func configureTableView() {
 		view.backgroundColor = .white
 		navigationItem.title = "Notifications"
+
 		tableView.register(NotificationCell.self, forCellReuseIdentifier: reuseIdentifier)
 		tableView.rowHeight = 80
 		tableView.separatorStyle = .none
+
+		refresher.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+		tableView.refreshControl = refresher
 	}
 }
 
@@ -86,7 +99,7 @@ extension NotificationController {
 		var snapshot = NotificationSnapshot()
 		snapshot.appendSections([.main])
 		snapshot.appendItems(notifications)
-		dataSource.apply(snapshot, animatingDifferences: true)
+		dataSource.apply(snapshot, animatingDifferences: false)
 	}
 }
 
@@ -96,14 +109,13 @@ extension NotificationController {
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let uid = notifications[indexPath.row].uid
-
+		showLoader(true)
 		UserService.fetchUser(withUid: uid) { [weak self] user in
+			self?.showLoader(false)
 			let controller = ProfileController(user: user)
 			self?.navigationController?.pushViewController(controller, animated: true)
 		}
-
 	}
-
 }
 
   // MARK: - Sections
@@ -119,7 +131,9 @@ extension NotificationController {
 extension NotificationController: NotificationCellDelegate {
 
 	func cell(_ cell: NotificationCell, wantsToFollow uid: String) {
+		showLoader(true)
 		UserService.follow(uid: uid) { error in
+			self.showLoader(false)
 			if let error = error {
 				print("DEBUG: Error trying to follow user \(error.localizedDescription)")
 				return
@@ -129,7 +143,9 @@ extension NotificationController: NotificationCellDelegate {
 	}
 
 	func cell(_ cell: NotificationCell, wantsToUnfollow uid: String) {
+		showLoader(true)
 		UserService.unfollow(uid: uid) { error in
+			self.showLoader(false)
 			if let error = error {
 				print("DEBUG: Error trying to unfollow user \(error.localizedDescription)")
 				return
@@ -139,7 +155,9 @@ extension NotificationController: NotificationCellDelegate {
 	}
 
 	func cell(_ cell: NotificationCell, wantsToViewPost postID: String) {
+		showLoader(true)
 		PostService.fetchPost(withPostID: postID) { [weak self] post in
+			self?.showLoader(false)
 			let controller = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
 			controller.post = post
 			self?.navigationController?.pushViewController(controller, animated: true)
