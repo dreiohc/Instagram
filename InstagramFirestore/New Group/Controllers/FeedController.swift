@@ -58,16 +58,9 @@ class FeedController: UICollectionViewController {
 			return
 		}
 
-		PostService.fetchPosts { [weak self] (posts, error) in
+		PostService.fetchFeedPosts { [weak self] posts in
 			self?.showLoader(false)
 			self?.collectionView.refreshControl?.endRefreshing()
-
-			guard let posts = posts else { return }
-
-			if let error = error {
-				print(error.localizedDescription)
-				return
-			}
 			self?.posts = posts
 			self?.checkIfUserLikedPosts()
 		}

@@ -85,12 +85,12 @@ struct PostService {
 			.document(uid)
 			.setData([:]) { _ in
 
-			// add post IDs of post that have been liked by the user in "user" collection.
-			COLLECTION_USERS.document(uid)
-				.collection("user-likes")
-				.document(post.postID)
-				.setData([:], completion: completion)
-		}
+				// add post IDs of post that have been liked by the user in "user" collection.
+				COLLECTION_USERS.document(uid)
+					.collection("user-likes")
+					.document(post.postID)
+					.setData([:], completion: completion)
+			}
 	}
 
 	static func unlikePost(post: Post, completion: @escaping(FirestoreCompletion)) {
@@ -108,13 +108,13 @@ struct PostService {
 			.document(uid)
 			.delete { (_) in
 
-			// delete post id that is inside "users" collection.
-			COLLECTION_USERS
-				.document(uid)
-				.collection("user-likes")
-				.document(post.postID)
-				.delete(completion: completion)
-		}
+				// delete post id that is inside "users" collection.
+				COLLECTION_USERS
+					.document(uid)
+					.collection("user-likes")
+					.document(post.postID)
+					.delete(completion: completion)
+			}
 	}
 
 	static func checkIfUserLikedPost(post: Post, completion: @escaping(Bool) -> Void) {
@@ -127,6 +127,44 @@ struct PostService {
 			.getDocument { (snapshot, _) in
 				guard let didLike = snapshot?.exists else { return }
 				completion(didLike)
+			}
+	}
+
+	static func fetchFeedPosts(completion: @escaping([Post]) -> Void) {
+		guard let uid = Auth.auth().currentUser?.uid else { return }
+		var posts = [Post]()
+		COLLECTION_USERS.document(uid).collection("user-feed").getDocuments { snapshot, _ in
+			guard let documents = snapshot?.documents else { return }
+
+			documents.forEach { document in
+				fetchPost(withPostID: document.documentID) { post in
+					posts.append(post)
+				}
+				completion(posts)
+			}
+		}
+	}
+
+	static func updateUserFeedAfterFollowing(user: User) {
+		guard let uid = Auth.auth().currentUser?.uid else { return }
+
+		// Get all post based on uid in owner_uid field.
+		let query = COLLECTION_POSTS.whereField("owner_uid", isEqualTo: user.uid)
+		query.getDocuments { (snapshot, _) in
+			guard let documents = snapshot?.documents else { return }
+
+			// Get all doc IDs from user posts.
+			let docIDs = documents.map({ $0.documentID })
+
+			// Upload all doc IDs of user's post to user's user-feed collection.
+			docIDs.forEach { id in
+				COLLECTION_USERS
+					.document(uid)
+					.collection("user-feed")
+					.document(id)
+					.setData([:])
+			}
+
 		}
 	}
 
