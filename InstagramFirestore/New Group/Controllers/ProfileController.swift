@@ -146,6 +146,7 @@ extension ProfileController: ProfileHeaderDelegate {
 				self?.user.isFollowed = false
 				self?.collectionView.reloadData()
 			}
+      PostService.updateUserFeedAfterFollowing(user: user, didFollow: false)
 		} else {
 			UserService.follow(uid: user.uid) { [weak self] _ in
 				self?.user.isFollowed = true
@@ -155,7 +156,7 @@ extension ProfileController: ProfileHeaderDelegate {
 																							 fromUser: currentUser,
 																							 type: .follow)
 
-				PostService.updateUserFeedAfterFollowing(user: user)
+				PostService.updateUserFeedAfterFollowing(user: user, didFollow: true)
 			}
 
 		}

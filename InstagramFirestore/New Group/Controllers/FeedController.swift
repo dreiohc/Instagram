@@ -50,21 +50,22 @@ class FeedController: UICollectionViewController {
 
 	// MARK: - API
 
-	private func fetchPosts() {
-
-		showLoader(true)
-		guard self.post == nil else {
-			showLoader(false)
-			return
-		}
-
-		PostService.fetchFeedPosts { [weak self] posts in
-			self?.showLoader(false)
-			self?.collectionView.refreshControl?.endRefreshing()
-			self?.posts = posts
-			self?.checkIfUserLikedPosts()
-		}
-	}
+  private func fetchPosts() {
+    
+    showLoader(true)
+    guard self.post == nil else {
+      showLoader(false)
+      collectionView.refreshControl?.endRefreshing()
+      return
+    }
+    PostService.fetchFeedPosts { [weak self] posts in
+      self?.showLoader(false)
+      self?.collectionView.refreshControl?.endRefreshing()
+      self?.posts = posts
+      self?.checkIfUserLikedPosts()
+    }
+    
+  }
 
 	private func checkIfUserLikedPosts() {
 		self.posts.forEach { post in
