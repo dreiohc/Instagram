@@ -56,6 +56,7 @@
 		C4C2EA362602418D00FE2527 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2EA352602418D00FE2527 /* CustomImageView.swift */; };
 		C4C2EA3E26024FC500FE2527 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2EA3826024E0800FE2527 /* CustomLabel.swift */; };
 		C4D7A2A9260355FA00E3D0D2 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D7A2A8260355FA00E3D0D2 /* ProfileHeaderViewModel.swift */; };
+		C4E31AF9261F0EBF00C575AA /* ResetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E31AF8261F0EBF00C575AA /* ResetPasswordController.swift */; };
 		FED0B2D7BADEFA7B54AC5AF8 /* Pods_InstagramFirestoreTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BE9DF3489F9F0D44A4F4D7 /* Pods_InstagramFirestoreTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +128,7 @@
 		C4C2EA352602418D00FE2527 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		C4C2EA3826024E0800FE2527 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		C4D7A2A8260355FA00E3D0D2 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
+		C4E31AF8261F0EBF00C575AA /* ResetPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordController.swift; sourceTree = "<group>"; };
 		DF809CC9C99F75A6C039E244 /* Pods_InstagramFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -287,6 +289,7 @@
 			children = (
 				C426D39525FFA5E600AE15E9 /* LoginController.swift */,
 				C426D39825FFA5EF00AE15E9 /* RegisterController.swift */,
+				C4E31AF8261F0EBF00C575AA /* ResetPasswordController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -334,7 +337,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C40024D425FF362500E5763A /* Build configuration list for PBXNativeTarget "InstagramFirestore" */;
 			buildPhases = (
-				C46352312617247C00EC18C8 /* SwiftLint */,
 				9091B14EFC5A3854164344E4 /* [CP] Check Pods Manifest.lock */,
 				C40024BC25FF362300E5763A /* Sources */,
 				C40024BD25FF362300E5763A /* Frameworks */,
@@ -507,24 +509,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C46352312617247C00EC18C8 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint autocorrect && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -549,6 +533,7 @@
 				C4C2EA362602418D00FE2527 /* CustomImageView.swift in Sources */,
 				C46EB2D8260997C600E4FBF4 /* UserCellViewModel.swift in Sources */,
 				C426D39625FFA5E600AE15E9 /* LoginController.swift in Sources */,
+				C4E31AF9261F0EBF00C575AA /* ResetPasswordController.swift in Sources */,
 				C468DC5C261C2DE400BDEAFA /* NotificationViewModel.swift in Sources */,
 				C4650EE02600D07600D278A7 /* AuthenticationViewModel.swift in Sources */,
 				C49846EB25FF675500EDD2F2 /* FeedCell.swift in Sources */,
