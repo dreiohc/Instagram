@@ -19,6 +19,8 @@ class ResetPasswordController: UIViewController {
   
   weak var delegate: ResetPasswordControllerDelegate?
   
+  var email: String?
+  
   private let emailTextField: CustomTextField = {
     let tf = CustomTextField(placeholder: "Email")
     tf.keyboardType = .emailAddress
@@ -90,6 +92,9 @@ class ResetPasswordController: UIViewController {
   private func configureUI() {
     configureGradientLayer()
     
+    emailTextField.text = email
+    viewModel.email = email
+    resetPasswordButton.isEnabledOnlyIf(viewModel.formIsValid)
     emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     
     view.addSubview(backButton)

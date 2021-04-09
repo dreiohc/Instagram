@@ -154,6 +154,9 @@ struct PostService {
       documents.forEach { document in
         fetchPost(withPostID: document.documentID) { post in
           posts.append(post)
+          
+          posts.sort { $0.timestamp.seconds > $1.timestamp.seconds }
+          
           completion(posts)
         }
       }

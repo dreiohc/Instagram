@@ -7,7 +7,7 @@
 
 import Firebase
 
-struct Post {
+struct Post: Hashable {
 	var caption: String
 	var likes: Int
 	let imageURL: String

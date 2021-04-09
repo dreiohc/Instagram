@@ -8,16 +8,36 @@
 import UIKit
 
 private let reuseIdentifier = "UserCell"
+private let postCellIdentifier = "ProfileCell"
 
 private typealias UserDataSource = UITableViewDiffableDataSource<SearchController.Section, User>
 private typealias UsersSnapshot = NSDiffableDataSourceSnapshot<SearchController.Section, User>
+private typealias PostDataSource = UICollectionViewDiffableDataSource<SearchController.Section, Post>
+private typealias PostsSnapshot = NSDiffableDataSourceSnapshot<SearchController.Section, Post>
 
-class SearchController: UITableViewController {
+class SearchController: UIViewController {
 
 	// MARK: - Properties
+  
+  private lazy var tableView: UITableView = {
+    let tv = UITableView()
+    tv.register(UserCell.self, forCellReuseIdentifier: reuseIdentifier)
+    tv.rowHeight = 64
+    tv.delegate = self
+    return tv
+  }()
+  
+  private lazy var collectionView: UICollectionView = {
+    let layout = UICollectionViewFlowLayout()
+    let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    cv.delegate = self
+    cv.backgroundColor = .white
+    cv.register(ProfileCell.self, forCellWithReuseIdentifier: postCellIdentifier)
+    return cv
+  }()
 
 	private var users = [User]()
-
+  private var posts = [Post]()
 	private var filteredUsers = [User]()
 
 	private let searchController = UISearchController(searchResultsController: nil)
@@ -26,16 +46,19 @@ class SearchController: UITableViewController {
 		return searchController.isActive && !searchController.searchBar.text!.isEmpty
 	}
 
-	private var dataSource: UserDataSource!
+	private var userDataSource: UserDataSource!
+  private var postDataSource: PostDataSource!
 
 	// MARK: - Lifecycle
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		configureSearchController()
-		configureDataSource()
-		configureTableView()
+    configureUI()
+    configureUserDataSource()
+    configurePostDataSource()
 		fetchUsers()
+    fetchPosts()
 	}
 
 	// MARK: - API
@@ -45,59 +68,101 @@ class SearchController: UITableViewController {
 		UserService.fetchUsers { [weak self] users in
 			self?.showLoader(false)
 			self?.users = users
-			self?.createSnapshot(from: users)
+			self?.createUserSnapshot(from: users)
 		}
 	}
-
+  
+  func fetchPosts() {
+    PostService.fetchPosts { [weak self] (posts, error) in
+      guard error == nil else {
+        self?.showMessage(withTitle: "Error loading posts",
+                          message: "\(error?.localizedDescription ?? "")")
+                          return }
+      
+      guard let posts = posts else { return }
+      
+      self?.posts = posts
+      self?.createPostSnapshot(from: posts)
+    }
+  }
+  
 	// MARK: - Helpers
 
-	private func configureTableView() {
+	private func configureUI() {
 		view.backgroundColor = .white
-		tableView.register(UserCell.self, forCellReuseIdentifier: reuseIdentifier)
-		tableView.rowHeight = 64
+    navigationItem.title = "Explore"
+    
+    view.addSubview(tableView)
+    tableView.fillSuperview()
+    tableView.isHidden = true
+    
+    view.addSubview(collectionView)
+    collectionView.fillSuperview()
 	}
 
-	private func configureDataSource() {
-		dataSource = UserDataSource(tableView: tableView, cellProvider: { (tableView, indexPath, user) -> UITableViewCell? in
+  private func configureSearchController() {
+    searchController.searchResultsUpdater = self
+    searchController.obscuresBackgroundDuringPresentation = false
+    searchController.hidesNavigationBarDuringPresentation = false
+    searchController.searchBar.placeholder = "Search"
+    searchController.searchBar.delegate = self
+    navigationItem.searchController = searchController
+    definesPresentationContext = false
+  }
+
+  // MARK: - DataSource
+  
+	private func configureUserDataSource() {
+		userDataSource = UserDataSource(tableView: tableView, cellProvider: { (tableView, indexPath, user) -> UITableViewCell? in
 			guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? UserCell else { fatalError() }
 			let user = self.inSearchMode ? self.filteredUsers[indexPath.row] : self.users[indexPath.row]
 			cell.viewModel = UserCellViewModel(user: user)
 			return cell
 		})
 	}
+  
+  private func configurePostDataSource() {
+    postDataSource = PostDataSource(collectionView: collectionView, cellProvider: { (collectionView, indexPath, post) -> UICollectionViewCell? in
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: postCellIdentifier, for: indexPath) as? ProfileCell else { fatalError() }
+      let post = self.posts[indexPath.row]
+      cell.viewModel = PostViewModel(post: post)
+      return cell
+    })
+  }
 
-	private func configureSearchController() {
-		searchController.searchResultsUpdater = self
-		searchController.obscuresBackgroundDuringPresentation = false
-		searchController.hidesNavigationBarDuringPresentation = false
-		searchController.searchBar.placeholder = "Search"
-		navigationItem.searchController = searchController
-		definesPresentationContext = false
-	}
 
-	private func createSnapshot(from users: [User]) {
+  // MARK: - Snapshots
+  
+	private func createUserSnapshot(from users: [User]) {
 		var snapshot = UsersSnapshot()
 		snapshot.appendSections([.main])
 		snapshot.appendItems(users)
-		dataSource.apply(snapshot, animatingDifferences: false)
+    userDataSource.apply(snapshot, animatingDifferences: false)
 	}
-
+  
+  private func createPostSnapshot(from users: [Post]) {
+    var snapshot = PostsSnapshot()
+    snapshot.appendSections([.main])
+    snapshot.appendItems(users)
+    postDataSource.apply(snapshot, animatingDifferences: false)
+  }
+  
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - Sections
 
 extension SearchController {
-
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return inSearchMode ? filteredUsers.count : users.count
-	}
+  fileprivate enum Section {
+    case main
+  }
 }
 
 // MARK: - UITableViewDelegate
 
-extension SearchController {
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		guard let nonFilteredUser = dataSource.itemIdentifier(for: indexPath) else { return }
+extension SearchController: UITableViewDelegate {
+  
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		guard let nonFilteredUser = userDataSource.itemIdentifier(for: indexPath) else { return }
 		let user = inSearchMode ? self.filteredUsers[indexPath.row] : nonFilteredUser
 		let controller = ProfileController(user: user)
 		navigationController?.pushViewController(controller, animated: true)
@@ -115,14 +180,58 @@ extension SearchController: UISearchResultsUpdating {
 
 		let users = searchText.isEmpty ? self.users : filteredUsers
 
-		self.createSnapshot(from: users)
+		self.createUserSnapshot(from: users)
 	}
 }
 
-// MARK: - CollectionView Sections
+// MARK: - UISearchBarDelegate
 
-extension SearchController {
-	fileprivate enum Section {
-		case main
-	}
+extension SearchController: UISearchBarDelegate {
+  
+  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    searchBar.showsCancelButton = true
+    collectionView.isHidden = true
+    tableView.isHidden = false
+  }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.endEditing(true)
+    searchBar.showsCancelButton = false
+    searchBar.text = nil
+    collectionView.isHidden = false
+    tableView.isHidden = true
+  }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension SearchController: UICollectionViewDelegate {
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard let post = postDataSource.itemIdentifier(for: indexPath) else { return }
+    let controller = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
+    controller.post = post
+    navigationController?.pushViewController(controller, animated: true)
+    
+  }
+  
+}
+
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension SearchController: UICollectionViewDelegateFlowLayout {
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    return 1
+  }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    return 1
+  }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let width = (view.frame.width - 2) / 3
+    return CGSize(width: width, height: width)
+  }
 }
